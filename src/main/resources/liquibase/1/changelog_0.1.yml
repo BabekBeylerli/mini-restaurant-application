@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create categories table
+      author: Babek Beylerli
+      changes:
+        - createTable:
+            tableName: categories
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                  remarks: id of category
+              - column:
+                  name: name
+                  type: varchar
+                  remarks: name of category
+
+              - column:
+                  name: updated_at
+                  type: timestamp
+                  defaultValue: now()
+                  remarks: When the record updated
+
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValue: now()
+                  remarks: When the record created
+            remarks: Table to store information about category food

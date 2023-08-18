@@ -1,0 +1,57 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create products table
+      author: Babek Beylerli
+      changes:
+        - createTable:
+            tableName: products
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                  remarks: id of card
+              - column:
+                  name: image
+                  type: text
+                  remarks: image of food
+              - column:
+                  name: price
+                  type: decimal(10,2)
+                  remarks: price of food
+              - column:
+                  name: name
+                  type: varchar(50)
+                  remarks: name of food
+              - column:
+                  name: status
+                  type: boolean
+                  remarks: status of food
+              - column:
+                  name: category_id
+                  type: bigint
+                constraints:
+                  - foreignKey:
+                      baseColumnNames: category_id
+                      baseTableName: products
+                      referencedColumnNames: id
+                      referencedTableName: categories
+                      constraintName: fk_products_to_categories
+              - column:
+                  name: description
+                  type: text
+                  remarks: description of food
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValue: now()
+                  remarks: When the record created
+              - column:
+                  name: updated_at
+                  type: timestamp
+                  defaultValue: now()
+                  remarks: When the record updated
+
